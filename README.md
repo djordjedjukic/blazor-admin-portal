@@ -3,8 +3,9 @@ A blazor admin template built on [portal-theme-bs5](https://themes.3rdwavemedia.
 
 Minimal javascript!
 
-***Work ongoing***
+## [Demo](https://625534e591e4231c9c438e22--unique-heliotrope-3880da.netlify.app/)
 
+***Work ongoing***
 
 ![Alt text](preview.png?raw=true "Admin")
 
