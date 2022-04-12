@@ -1,2 +1,12 @@
-# blazor-admin-portal
-Admin dashboard template built with blazor
+# BlazorAdminPortal
+A blazor admin template built on [portal-theme-bs5](https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/)
+
+Minimal javascript!
+
+***Work ongoing***
+
+
+![Alt text](preview.png?raw=true "Admin")
+
+Based on [Tabler.Blazor](https://github.com/zarxor/Tabler.Blazor) by [zarxor](https://github.com/zarxor)
+
