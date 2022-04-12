@@ -8,5 +8,3 @@ Minimal javascript!
 
 ![Alt text](preview.png?raw=true "Admin")
 
-Based on [Tabler.Blazor](https://github.com/zarxor/Tabler.Blazor) by [zarxor](https://github.com/zarxor)
-
