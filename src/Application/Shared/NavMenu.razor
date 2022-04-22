@@ -27,6 +27,8 @@
 @*     </nav> *@
 @* </div> *@
 
+@inject IJSRuntime JsRuntime
+
 <header class="app-header fixed-top">
 <div class="app-header-inner">
     <div class="container-fluid py-2">
@@ -34,7 +36,7 @@
             <div class="row justify-content-between align-items-center">
 
                 <div class="col-auto">
-                    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#" @onclick="ToggleNavMenu">
+                    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="javascript:void(0);" @onclick="ToggleNavMenu">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img">
                             <title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
                         </svg>
@@ -178,7 +180,7 @@
 <div id="app-sidepanel" class="app-sidepanel @NavMenuCssClass">
 <div id="sidepanel-drop" class="sidepanel-drop" onclick="@ToggleNavMenu"></div>
 <div class="sidepanel-inner d-flex flex-column">
-    <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none" onclick="@ToggleNavMenu">&times;</a>
+    <a id="sidepanel-close" class="sidepanel-close d-xl-none" href="javascript:void(0);" onclick="@ToggleNavMenu">&times;</a>
     <div class="app-branding">
         <a class="app-logo" href="index.html">
             <img class="logo-icon me-2" src="images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span>
@@ -380,13 +382,25 @@
 </header><!--//app-header-->
 
 @code {
-    private bool collapseNavMenu = true;
+    private bool _collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "sidepanel-visible" : "sidepanel-hidden";
+    private string? NavMenuCssClass => _collapseNavMenu ? "sidepanel-visible" : "sidepanel-hidden";
 
     private void ToggleNavMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        _collapseNavMenu = !_collapseNavMenu;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var dimension = await JsRuntime.InvokeAsync<WindowDimension>("getWindowDimensions");
+        _collapseNavMenu = dimension.Width >= 1200;
+    }
+    
+    private class WindowDimension
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 
 }
